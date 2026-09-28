@@ -1,0 +1,2056 @@
+<head> <style> *{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+:root{
+  --bg:#08090f;
+  --bg2:#0d0f19;
+  --card:#121522;
+  --card2:#171a2a;
+  --border:#252a3d;
+
+  --purple:#8b5cf6;
+  --purple2:#a855f7;
+  --blue:#3b82f6;
+  --cyan:#22d3ee;
+
+  --green:#22c55e;
+  --green2:#34d399;
+
+  --yellow:#facc15;
+  --orange:#fb923c;
+  --red:#ef4444;
+
+  --text:#f8fafc;
+  --muted:#8b93a7;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(139,92,246,.20),transparent 35%),
+    var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+}
+
+button,
+input,
+textarea{
+  font-family:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.app{
+  width:100%;
+  max-width:520px;
+  min-height:100vh;
+  margin:auto;
+  padding-bottom:85px;
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page{
+  display:none;
+  padding:20px 16px;
+  animation:pageIn .25s ease;
+}
+
+.page.active{
+  display:block;
+}
+
+@keyframes pageIn{
+  from{
+    opacity:0;
+    transform:translateY(5px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* =========================
+   TEXT
+========================= */
+
+h1{
+  font-size:28px;
+  font-weight:800;
+  letter-spacing:-.7px;
+}
+
+h2{
+  font-size:21px;
+  font-weight:800;
+}
+
+h3{
+  font-size:16px;
+  font-weight:700;
+}
+
+p{
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.small{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.035),rgba(255,255,255,.01)),
+    var(--card);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.20),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.card:hover{
+  border-color:#343b58;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+  position:relative;
+  overflow:hidden;
+  padding:24px 20px;
+  border-radius:24px;
+  margin-bottom:16px;
+
+  background:
+    radial-gradient(circle at 80% 15%,rgba(168,85,247,.30),transparent 30%),
+    radial-gradient(circle at 10% 90%,rgba(59,130,246,.22),transparent 35%),
+    linear-gradient(145deg,#171329,#0f1425);
+
+  border:1px solid rgba(139,92,246,.28);
+  box-shadow:
+    0 15px 45px rgba(91,33,182,.15),
+    inset 0 1px 0 rgba(255,255,255,.04);
+}
+
+.hero h1{
+  margin-bottom:5px;
+}
+
+.hero p{
+  font-size:13px;
+}
+
+/* =========================
+   STREAK
+========================= */
+
+.streak{
+  text-align:center;
+  padding:25px 15px;
+}
+
+.streakNumber{
+  font-size:64px;
+  line-height:1;
+  font-weight:900;
+
+  background:linear-gradient(
+    135deg,
+    #ffffff,
+    #a78bfa,
+    #60a5fa
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+
+  text-shadow:0 0 30px rgba(139,92,246,.25);
+}
+
+.streakLabel{
+  margin-top:8px;
+  color:var(--muted);
+  font-size:13px;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+}
+
+/* =========================
+   TIMER
+========================= */
+
+.timer{
+  font-size:27px;
+  font-weight:800;
+  letter-spacing:1px;
+  text-align:center;
+
+  background:linear-gradient(90deg,#8b5cf6,#3b82f6);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+
+  margin-top:12px;
+}
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress{
+  margin-top:12px;
+}
+
+.progressTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:7px;
+}
+
+.progressTop span{
+  font-size:12px;
+  color:var(--muted);
+}
+
+.progressBar{
+  height:9px;
+  width:100%;
+  background:#202438;
+  border-radius:20px;
+  overflow:hidden;
+}
+
+.progressBar > div{
+  height:100%;
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--purple),
+      var(--blue),
+      var(--cyan)
+    );
+
+  box-shadow:
+    0 0 12px rgba(99,102,241,.45);
+
+  transition:width .4s ease;
+}
+
+/* =========================
+   GRID / STATS
+========================= */
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+}
+
+.stat{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:17px;
+  min-height:95px;
+}
+
+.statValue{
+  font-size:25px;
+  font-weight:850;
+  margin-top:8px;
+}
+
+.statLabel{
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* Different colored stats */
+
+.stat:nth-child(1) .statValue{
+  color:var(--purple2);
+}
+
+.stat:nth-child(2) .statValue{
+  color:var(--blue);
+}
+
+.stat:nth-child(3) .statValue{
+  color:var(--green2);
+}
+
+.stat:nth-child(4) .statValue{
+  color:var(--yellow);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+  width:100%;
+  border:none;
+  border-radius:14px;
+  padding:13px 16px;
+  color:white;
+  font-size:14px;
+  font-weight:700;
+  margin-top:10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--blue)
+    );
+
+  box-shadow:
+    0 8px 20px rgba(79,70,229,.22);
+
+  transition:
+    transform .15s ease,
+    filter .15s ease;
+}
+
+.btn:hover{
+  filter:brightness(1.1);
+}
+
+.btn:active{
+  transform:scale(.97);
+}
+
+.btn.green{
+  background:linear-gradient(
+    135deg,
+    #16a34a,
+    #22c55e
+  );
+}
+
+.btn.red{
+  background:linear-gradient(
+    135deg,
+    #dc2626,
+    #f97316
+  );
+}
+
+.btn.dark{
+  background:#1b1f30;
+  border:1px solid #30364d;
+  box-shadow:none;
+}
+
+/* =========================
+   QUESTS
+========================= */
+
+.quest{
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:15px;
+  margin-bottom:10px;
+
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:17px;
+
+  transition:.2s;
+}
+
+.quest:hover{
+  border-color:#3b4260;
+  transform:translateY(-1px);
+}
+
+.questIcon{
+  width:43px;
+  height:43px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139,92,246,.22),
+      rgba(59,130,246,.12)
+    );
+
+  border:1px solid rgba(139,92,246,.25);
+
+  font-size:20px;
+}
+
+.questInfo{
+  flex:1;
+}
+
+.questTitle{
+  font-size:14px;
+  font-weight:700;
+}
+
+.questReward{
+  color:var(--yellow);
+  font-size:12px;
+  margin-top:4px;
+}
+
+.quest.done{
+  opacity:.55;
+  border-color:rgba(34,197,94,.3);
+}
+
+.quest.done .questIcon{
+  background:rgba(34,197,94,.15);
+  border-color:rgba(34,197,94,.3);
+}
+
+/* =========================
+   TREE
+========================= */
+
+.tree{
+  position:relative;
+  text-align:center;
+  padding:25px 10px;
+}
+
+.treeStage{
+  padding:17px;
+  border-radius:18px;
+  margin-bottom:10px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(34,197,94,.10),
+      rgba(139,92,246,.07)
+    );
+
+  border:1px solid rgba(34,197,94,.20);
+}
+
+.treeIcon{
+  font-size:42px;
+  margin-bottom:8px;
+}
+
+.treeStage h3{
+  color:var(--green2);
+}
+
+.treeStage p{
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar{
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:6px;
+  margin-top:12px;
+}
+
+.calendarDay{
+  aspect-ratio:1;
+  border-radius:7px;
+  background:#191d2b;
+  border:1px solid #242a3d;
+}
+
+.calendarDay.active{
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--blue)
+    );
+
+  border-color:transparent;
+
+  box-shadow:
+    0 0 10px rgba(99,102,241,.3);
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profileAvatar{
+  width:82px;
+  height:82px;
+  margin:5px auto 14px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:50%;
+
+  font-size:36px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--purple),
+      var(--blue)
+    );
+
+  box-shadow:
+    0 0 35px rgba(139,92,246,.25);
+}
+
+.profileName{
+  text-align:center;
+  font-size:21px;
+  font-weight:800;
+}
+
+.levelBadge{
+  display:inline-block;
+  padding:5px 10px;
+  margin-top:7px;
+
+  border-radius:20px;
+
+  background:rgba(250,204,21,.12);
+  border:1px solid rgba(250,204,21,.25);
+
+  color:var(--yellow);
+  font-size:11px;
+  font-weight:700;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+textarea{
+  width:100%;
+  border:1px solid var(--border);
+  outline:none;
+
+  color:white;
+  background:#0d101a;
+
+  border-radius:13px;
+  padding:13px;
+
+  font-size:14px;
+
+  transition:.2s;
+}
+
+textarea{
+  min-height:110px;
+  resize:vertical;
+}
+
+input:focus,
+textarea:focus{
+  border-color:var(--purple);
+  box-shadow:
+    0 0 0 3px rgba(139,92,246,.10);
+}
+
+label{
+  display:block;
+  color:var(--muted);
+  font-size:12px;
+  margin:13px 0 6px;
+}
+
+/* =========================
+   GUIDE
+========================= */
+
+.guideText{
+  font-size:14px;
+  line-height:1.65;
+  color:#b5bdcf;
+}
+
+.guideText h3{
+  color:white;
+  margin-top:20px;
+  margin-bottom:6px;
+}
+
+.guideText strong{
+  color:#c4b5fd;
+}
+
+.guideBox{
+  padding:15px;
+  margin:12px 0;
+
+  border-radius:15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139,92,246,.09),
+      rgba(59,130,246,.06)
+    );
+
+  border:1px solid rgba(139,92,246,.18);
+}
+
+/* =========================
+   BOTTOM NAV
+========================= */
+
+.bottomNav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:100%;
+  max-width:520px;
+
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+
+  padding:8px 5px calc(8px + env(safe-area-inset-bottom));
+
+  background:
+    rgba(10,12,20,.92);
+
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+
+  border-top:1px solid #24293b;
+
+  z-index:100;
+}
+
+.navBtn{
+  border:none;
+  background:none;
+  color:#687086;
+
+  padding:8px 2px;
+
+  font-size:9px;
+  font-weight:700;
+
+  transition:.2s;
+}
+
+.navBtn span{
+  display:block;
+  font-size:19px;
+  margin-bottom:3px;
+}
+
+.navBtn.active{
+  color:#a78bfa;
+}
+
+.navBtn.active span{
+  filter:
+    drop-shadow(
+      0 0 7px rgba(139,92,246,.55)
+    );
+}
+
+/* =========================
+   POPUP
+========================= */
+
+.popup{
+  position:fixed;
+  inset:0;
+
+  display:none;
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(7px);
+
+  z-index:200;
+}
+
+.popup.active{
+  display:flex;
+}
+
+.popupBox{
+  width:100%;
+  max-width:420px;
+
+  padding:22px;
+
+  border-radius:23px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #181b2a,
+      #10121c
+    );
+
+  border:1px solid #30364d;
+
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.55);
+
+  animation:popupIn .2s ease;
+}
+
+@keyframes popupIn{
+  from{
+    opacity:0;
+    transform:scale(.95);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+  position:fixed;
+
+  left:50%;
+  bottom:92px;
+
+  transform:
+    translateX(-50%)
+    translateY(20px);
+
+  opacity:0;
+
+  padding:11px 17px;
+
+  border-radius:30px;
+
+  color:white;
+  background:#191d2b;
+
+  border:1px solid #343b53;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.35);
+
+  font-size:13px;
+  font-weight:600;
+
+  pointer-events:none;
+
+  transition:.25s;
+
+  z-index:300;
+}
+
+.toast.show{
+  opacity:1;
+  transform:
+    translateX(-50%)
+    translateY(0);
+}
+
+/* =========================
+   ACHIEVEMENTS
+========================= */
+
+.achievement{
+  display:flex;
+  align-items:center;
+  gap:13px;
+
+  padding:14px;
+
+  border-radius:16px;
+
+  background:#111521;
+  border:1px solid var(--border);
+
+  margin-bottom:9px;
+}
+
+.achievementIcon{
+  width:42px;
+  height:42px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(250,204,21,.18),
+      rgba(251,146,60,.08)
+    );
+
+  color:var(--yellow);
+
+  font-size:20px;
+}
+
+.achievement.locked{
+  opacity:.4;
+  filter:grayscale(.5);
+}
+
+/* =========================
+   SECTION TITLES
+========================= */
+
+.sectionTitle{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin:22px 2px 11px;
+}
+
+.sectionTitle h2{
+  font-size:17px;
+}
+
+.sectionTitle span{
+  color:var(--muted);
+  font-size:11px;
+}
+
+/* =========================
+   SPECIAL COLORS
+========================= */
+
+.purple{
+  color:var(--purple2);
+}
+
+.blue{
+  color:var(--blue);
+}
+
+.green{
+  color:var(--green2);
+}
+
+.yellow{
+  color:var(--yellow);
+}
+
+.orange{
+  color:var(--orange);
+}
+
+.red{
+  color:var(--red);
+}
+
+/* =========================
+   SMALL PHONES
+========================= */
+
+@media(max-width:380px){
+
+  .page{
+    padding:16px 12px;
+  }
+
+  h1{
+    font-size:24px;
+  }
+
+  .streakNumber{
+    font-size:54px;
+  }
+
+  .timer{
+    font-size:23px;
+  }
+
+  .card{
+    padding:15px;
+    border-radius:17px;
+  }
+
+  .navBtn{
+    font-size:8px;
+  }
+
+  .navBtn span{
+    font-size:17px;
+  }
+} </style></sty></head></headd>
+<div class="app">
+
+<header>
+  <div class="logo">MY PROGRESS</div>
+  <div class="level" id="levelBadge">LVL 1</div>
+</header>
+
+<section id="home" class="page active">
+
+<div class="card hero">
+<div class="label">CURRENT STREAK</div>
+<div class="streak" id="streakDisplay">0</div>
+<div class="sub">days of progress</div>
+
+<div style="margin-top:22px">
+<div class="label">TIME SINCE START</div>
+<div class="timer" id="timer">00:00:00:00</div>
+</div>
+
+<div style="margin-top:22px">
+<div style="display:flex;justify-content:space-between">
+<span class="small">LEVEL <b id="level">1</b></span>
+<span class="small"><span id="xp">0</span> XP</span>
+</div>
+
+<div class="progress">
+<div class="progressBar" id="xpBar"></div>
+</div>
+
+<div class="xpText" id="nextLevel">100 XP to next level</div>
+</div>
+</div>
+
+<div class="sectionTitle">Your Growth</div>
+
+<div class="card">
+<div class="tree" id="tree">🌱</div>
+<div class="treeName" id="treeName">The Beginning</div>
+<div class="treeText" id="treeText">Start your journey.</div>
+</div>
+
+<div class="grid">
+
+<div class="stat">
+<span>Longest Streak</span>
+<strong id="longest">0</strong>
+</div>
+
+<div class="stat">
+<span>Workout Days</span>
+<strong id="workouts">0</strong>
+</div>
+
+<div class="stat">
+<span>Quests Done</span>
+<strong id="questsDone">0</strong>
+</div>
+
+<div class="stat">
+<span>Achievements</span>
+<strong id="achievementCount">0</strong>
+</div>
+
+</div>
+
+<div class="sectionTitle">Daily Reminder</div>
+
+<div class="card">
+<div class="quote" id="quote"></div>
+<div class="quoteRef" id="quoteRef"></div>
+</div>
+
+<div class="sectionTitle">Quick Actions</div>
+
+<div class="row">
+<button onclick="showPage('quests',this)">Daily Quests</button>
+<button class="dark" onclick="showPage('workout',this)">Workout</button>
+</div>
+
+<div style="margin-top:9px">
+<button class="danger full" onclick="urgeButton()">I'm Struggling</button>
+</div>
+
+</section>
+
+
+<section id="quests" class="page">
+
+<div class="sectionTitle">Today's Quests</div>
+
+<div class="card">
+<div class="label">DAILY PROGRESS</div>
+<h2 id="questProgress" style="margin-top:6px">0 / 5</h2>
+
+<div class="progress">
+<div class="progressBar" id="questBar"></div>
+</div>
+</div>
+
+<div id="questList"></div>
+
+<div class="sectionTitle">Daily Check-In</div>
+
+<div class="card">
+<p class="small">How did today go?</p>
+
+<select id="mood">
+<option>Great</option>
+<option>Good</option>
+<option>Okay</option>
+<option>Difficult</option>
+</select>
+
+<textarea id="checkin" placeholder="Write a few thoughts about today..."></textarea>
+
+<button class="full" onclick="saveCheckin()">Save Check-In</button>
+</div>
+
+</section>
+
+
+<section id="workout" class="page">
+
+<div class="sectionTitle">Workout</div>
+
+<div class="card hero">
+<div class="label">WORKOUT DAYS</div>
+<div class="streak" id="workoutStreak">0</div>
+<div class="sub">total workout days</div>
+</div>
+
+<div class="card">
+<div class="label">LOG TODAY'S WORKOUT</div>
+
+<input id="workoutName" placeholder="Workout name">
+
+<div class="row">
+<input id="workoutDuration" type="number" placeholder="Minutes">
+<input id="workoutExercises" type="number" placeholder="Exercises">
+</div>
+
+<button class="full" onclick="logWorkout()">Complete Workout +100 XP</button>
+</div>
+
+<div class="sectionTitle">Last 30 Days</div>
+
+<div class="card">
+<div class="calendar" id="calendar"></div>
+</div>
+
+</section>
+
+
+<section id="progress" class="page">
+
+<div class="sectionTitle">Progress</div>
+
+<div class="grid">
+
+<div class="stat">
+<span>Total XP</span>
+<strong id="totalXP">0</strong>
+</div>
+
+<div class="stat">
+<span>Level</span>
+<strong id="progressLevel">1</strong>
+</div>
+
+<div class="stat">
+<span>Days</span>
+<strong id="totalDays">0</strong>
+</div>
+
+<div class="stat">
+<span>Workouts</span>
+<strong id="totalWorkouts">0</strong>
+</div>
+
+</div>
+
+<div class="sectionTitle">Achievements</div>
+
+<div id="achievements"></div>
+
+<div class="sectionTitle">Milestones</div>
+
+<div class="card">
+<div id="milestones"></div>
+</div>
+
+</section>
+
+
+<section id="profile" class="page">
+
+<div class="sectionTitle">Profile</div>
+
+<div class="card">
+
+<div class="label">YOUR LEVEL</div>
+
+<h1 style="font-size:45px;margin:5px 0" id="profileLevel">1</h1>
+
+<div class="progress">
+<div class="progressBar" id="profileBar"></div>
+</div>
+
+<p class="small" id="profileXP"></p>
+
+</div>
+
+<div class="sectionTitle">Main Goal</div>
+
+<div class="card">
+
+<input id="goalInput" placeholder="What are you working toward?">
+
+<button class="full" onclick="saveGoal()">Save Goal</button>
+
+<p class="small" style="margin-top:12px" id="savedGoal"></p>
+
+</div>
+
+<div class="sectionTitle">Recovery Start</div>
+
+<div class="card">
+
+<p class="small">
+Choose when you started your current streak.
+</p>
+
+<input id="startDate" type="datetime-local">
+
+<button class="full" onclick="setStart()">Set Start Date</button>
+
+<div style="margin-top:10px">
+<button class="danger full" onclick="resetStreak()">Reset Streak</button>
+</div>
+
+</div>
+
+<div class="sectionTitle">Journal</div>
+
+<div class="card">
+
+<textarea id="journal" placeholder="Write anything you want to remember..."></textarea>
+
+<button class="full" onclick="saveJournal()">Save Journal</button>
+
+</div>
+
+</section>
+
+
+<section id="guide" class="page">
+
+<div class="sectionTitle">How To Use The App</div>
+
+<div class="card">
+
+<div class="label">START HERE</div>
+
+<h2 style="margin-top:8px">Welcome to My Progress</h2>
+
+<p class="small guideText">
+This app tracks your progress, streak, XP, levels, workouts, quests and goals.
+Your information is saved on your device.
+</p>
+
+</div>
+
+<div class="sectionTitle">🔥 Streak</div>
+
+<div class="card">
+<p class="small guideText">
+Your streak shows how many full days have passed since your Recovery Start date.
+Change the date from Profile whenever you need to.
+</p>
+</div>
+
+<div class="sectionTitle">⭐ XP & Levels</div>
+
+<div class="card">
+<p class="small guideText">
+Complete quests and workouts to earn XP. As your XP increases, your level increases.
+The bar on Home shows your progress toward the next level.
+</p>
+</div>
+
+<div class="sectionTitle">✅ Daily Quests</div>
+
+<div class="card">
+<p class="small guideText">
+Open Quests every day and complete the tasks. Each completed quest gives XP.
+Quests reset for the next day.
+</p>
+</div>
+
+<div class="sectionTitle">🏋️ Workouts</div>
+
+<div class="card">
+<p class="small guideText">
+Open Workout, enter your workout information and press Complete Workout.
+You'll receive 100 XP and the day will appear on your calendar.
+</p>
+</div>
+
+<div class="sectionTitle">🌳 Growth Tree</div>
+
+<div class="card">
+<div style="font-size:45px;text-align:center">🌱 → 🌿 → 🌳 → 🌲</div>
+
+<p class="small guideText">
+Your tree changes as your streak grows. It's a visual representation of your consistency.
+</p>
+</div>
+
+<div class="sectionTitle">👤 Profile</div>
+
+<div class="card">
+<p class="small guideText">
+Profile lets you set your main goal, change your start date, write in your journal
+and reset your streak.
+</p>
+</div>
+
+<div class="sectionTitle">🛡️ I'm Struggling</div>
+
+<div class="card">
+<p class="small guideText">
+Use this button when you're having a difficult moment. It gives you a reminder
+to pause and think before acting on a temporary urge.
+</p>
+</div>
+
+<div class="card">
+<button class="full" onclick="showPage('home')">Back To Home</button>
+</div>
+
+</section>
+
+</div>
+
+
+<div class="bottomNav">
+
+<button class="navBtn active" onclick="showPage('home',this)">
+HOME
+</button>
+
+<button class="navBtn" onclick="showPage('progress',this)">
+PROGRESS
+</button>
+
+<button class="navBtn" onclick="showPage('quests',this)">
+QUESTS
+</button>
+
+<button class="navBtn" onclick="showPage('workout',this)">
+WORKOUT
+</button>
+
+<button class="navBtn" onclick="showPage('profile',this)">
+PROFILE
+</button>
+
+<button class="navBtn" onclick="showPage('guide',this)">
+GUIDE
+</button>
+
+</div>
+
+
+<div class="popup" id="popup">
+
+<div class="popupBox">
+
+<div class="popupIcon" id="popupIcon">🔥</div>
+
+<div class="popupTitle" id="popupTitle">Keep Going</div>
+
+<div class="popupText" id="popupText">One more day.</div>
+
+<button class="full" onclick="closePopup()">Continue</button>
+
+</div>
+
+</div>
+
+
+<div class="toast" id="toast">Saved</div>
+<script> let data = JSON.parse(
+localStorage.getItem("myProgress")
+) || {
+
+start:null,
+longest:0,
+xp:0,
+workouts:0,
+workoutDates:[],
+questsDone:0,
+completedQuests:{},
+checkins:{},
+goal:"",
+journal:""
+
+};
+
+function save(){
+
+localStorage.setItem(
+"myProgress",
+JSON.stringify(data)
+);
+
+}
+
+if(!data.start){
+
+data.start=new Date().toISOString();
+
+save();
+
+}
+
+function todayKey(){
+
+let d=new Date();
+
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+
+}
+
+function getStreak(){
+
+if(!data.start)return 0;
+
+let start=new Date(data.start);
+let now=new Date();
+
+let difference=now-start;
+
+let days=Math.floor(
+difference/86400000
+);
+
+return Math.max(0,days);
+
+}
+
+function updateStreak(){
+
+let streak=getStreak();
+
+if(streak>data.longest){
+
+data.longest=streak;
+
+save();
+
+}
+
+document.getElementById("streakDisplay").textContent=streak;
+document.getElementById("longest").textContent=data.longest;
+
+}
+
+function updateTimer(){
+
+if(!data.start)return;
+
+let start=new Date(data.start);
+let now=new Date();
+
+let seconds=Math.floor(
+(now-start)/1000
+);
+
+if(seconds<0)seconds=0;
+
+let days=Math.floor(seconds/86400);
+
+seconds%=86400;
+
+let hours=Math.floor(seconds/3600);
+
+seconds%=3600;
+
+let mins=Math.floor(seconds/60);
+
+seconds%=60;
+
+function pad(number){
+
+return String(number).padStart(2,"0");
+
+}
+
+document.getElementById("timer").textContent=
+pad(days)+":"+
+pad(hours)+":"+
+pad(mins)+":"+
+pad(seconds);
+
+}
+
+setInterval(updateTimer,1000);
+
+
+function getLevel(){
+
+let xp=data.xp;
+
+let level=1;
+
+let needed=100;
+
+while(xp>=needed){
+
+xp-=needed;
+
+level++;
+
+needed=Math.floor(
+100*level*1.35
+);
+
+}
+
+return{
+level:level,
+current:xp,
+needed:needed
+};
+
+}
+
+
+function updateLevel(){
+
+let l=getLevel();
+
+document.getElementById("level").textContent=l.level;
+document.getElementById("levelBadge").textContent="LVL "+l.level;
+document.getElementById("progressLevel").textContent=l.level;
+document.getElementById("profileLevel").textContent=l.level;
+document.getElementById("xp").textContent=data.xp;
+document.getElementById("totalXP").textContent=data.xp;
+
+let percent=(l.current/l.needed)*100;
+
+document.getElementById("xpBar").style.width=percent+"%";
+document.getElementById("profileBar").style.width=percent+"%";
+
+document.getElementById("nextLevel").textContent=
+(l.needed-l.current)+" XP to next level";
+
+document.getElementById("profileXP").textContent=
+l.current+" / "+l.needed+" XP";
+
+}
+
+
+function updateTree(){
+
+let streak=getStreak();
+
+let tree="🌱";
+let name="The Beginning";
+let text="Start your journey.";
+
+if(streak>=7){
+
+tree="🌿";
+name="The Sprout";
+text="Your first week is complete.";
+
+}
+
+if(streak>=30){
+
+tree="🌳";
+name="Growing Strong";
+text="A month of consistency.";
+
+}
+
+if(streak>=90){
+
+tree="🌲";
+name="Deep Roots";
+text="Your discipline is becoming a habit.";
+
+}
+
+if(streak>=180){
+
+tree="🌲";
+name="Strong Roots";
+text="Six months of progress.";
+
+}
+
+if(streak>=365){
+
+tree="🌳";
+name="The Ancient Tree";
+text="One full year of growth.";
+
+}
+
+document.getElementById("tree").textContent=tree;
+document.getElementById("treeName").textContent=name;
+document.getElementById("treeText").textContent=text;
+
+}
+
+
+const quests=[
+
+["discipline","Maintain your streak",50],
+["fitness","Complete a workout",100],
+["grooming","Complete your grooming routine",50],
+["mind","Spend 10 minutes improving yourself",50],
+["recovery","Complete your daily commitment",100]
+
+];
+
+
+function renderQuests(){
+
+let today=todayKey();
+
+let container=document.getElementById("questList");
+
+container.innerHTML="";
+
+let done=0;
+
+quests.forEach(q=>{
+
+let id=q[0];
+
+let key=today+"_"+id;
+
+let completed=data.completedQuests[key];
+
+if(completed)done++;
+
+let div=document.createElement("div");
+
+div.className="quest "+(completed?"done":"");
+
+div.innerHTML=`
+
+<div class="questInfo">
+
+<div class="checkbox">
+${completed?"✓":""}
+</div>
+
+<div>
+
+<div>${q[1]}</div>
+
+<div class="xp">
++${q[2]} XP
+</div>
+
+</div>
+
+</div>
+
+<button
+class="${completed?"dark":""}"
+onclick="completeQuest('${id}')">
+
+${completed?"Done":"Complete"}
+
+</button>
+
+`;
+
+container.appendChild(div);
+
+});
+
+document.getElementById("questProgress").textContent=
+done+" / "+quests.length;
+
+document.getElementById("questBar").style.width=
+(done/quests.length*100)+"%";
+
+}
+
+
+function completeQuest(id){
+
+let today=todayKey();
+
+let key=today+"_"+id;
+
+if(data.completedQuests[key])return;
+
+let q=quests.find(x=>x[0]===id);
+
+data.completedQuests[key]=true;
+
+data.questsDone++;
+
+data.xp+=q[2];
+
+save();
+
+renderQuests();
+updateAll();
+
+showToast("+"+q[2]+" XP");
+
+}
+
+
+function saveCheckin(){
+
+let today=todayKey();
+
+let mood=document.getElementById("mood").value;
+
+let text=document.getElementById("checkin").value;
+
+data.checkins[today]={
+mood:mood,
+text:text
+};
+
+save();
+
+showToast("Check-in saved");
+
+}
+
+
+function logWorkout(){
+
+let today=todayKey();
+
+if(data.workoutDates.includes(today)){
+
+alert("You already logged a workout today.");
+
+return;
+
+}
+
+data.workoutDates.push(today);
+
+data.workouts++;
+
+data.xp+=100;
+
+save();
+
+document.getElementById("workoutName").value="";
+document.getElementById("workoutDuration").value="";
+document.getElementById("workoutExercises").value="";
+
+updateAll();
+
+showPopup(
+"🏋️",
+"WORKOUT COMPLETE",
+"+100 XP — Keep building."
+);
+
+}
+
+
+function renderCalendar(){
+
+let box=document.getElementById("calendar");
+
+box.innerHTML="";
+
+for(let i=29;i>=0;i--){
+
+let d=new Date();
+
+d.setDate(d.getDate()-i);
+
+let key=
+d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
+
+let el=document.createElement("div");
+
+el.className="day";
+
+if(data.workoutDates.includes(key)){
+
+el.classList.add("workout");
+el.textContent="✓";
+
+}else{
+
+el.textContent=d.getDate();
+
+}
+
+box.appendChild(el);
+
+}
+
+document.getElementById("workouts").textContent=data.workouts;
+document.getElementById("totalWorkouts").textContent=data.workouts;
+document.getElementById("workoutStreak").textContent=data.workouts;
+
+}
+
+
+function renderAchievements(){
+
+let list=[
+
+["🌱","First Step",getStreak()>=1],
+["🔥","One Week",getStreak()>=7],
+["💪","30 Day Discipline",getStreak()>=30],
+["🏆","90 Day Discipline",getStreak()>=90],
+["🌳","One Year",getStreak()>=365],
+["🏋️","First Workout",data.workouts>=1],
+["⚡","10 Workouts",data.workouts>=10],
+["💎","100 Workouts",data.workouts>=100],
+["⭐","Level 10",getLevel().level>=10],
+["👑","Level 25",getLevel().level>=25],
+["☀️","Level 50",getLevel().level>=50]
+
+];
+
+let container=document.getElementById("achievements");
+
+container.innerHTML="";
+
+let unlocked=0;
+
+list.forEach(a=>{
+
+if(a[2])unlocked++;
+
+let div=document.createElement("div");
+
+div.className="achievement "+(!a[2]?"locked":"");
+
+div.innerHTML=`
+
+<div class="badge">
+${a[2]?a[0]:"🔒"}
+</div>
+
+<div>
+
+<strong>${a[1]}</strong>
+
+<div class="small">
+${a[2]?"Unlocked":"Locked"}
+</div>
+
+</div>
+
+`;
+
+container.appendChild(div);
+
+});
+
+document.getElementById("achievementCount").textContent=unlocked;
+
+}
+
+
+function renderMilestones(){
+
+let milestones=[1,3,7,14,30,60,90,180,365];
+
+let box=document.getElementById("milestones");
+
+box.innerHTML="";
+
+let streak=getStreak();
+
+milestones.forEach(m=>{
+
+let reached=streak>=m;
+
+let div=document.createElement("div");
+
+div.className="milestone "+(reached?"done":"locked");
+
+div.innerHTML=
+(reached?"✓ ":"○ ")+
+"<b>"+m+" Day"+(m===1?"":"s")+"</b>";
+
+box.appendChild(div);
+
+});
+
+}
+
+
+const quotes=[
+
+{
+text:"Indeed, with hardship comes ease.",
+ref:"Qur'an 94:6"
+},
+
+{
+text:"Allah does not burden a soul beyond what it can bear.",
+ref:"Qur'an 2:286"
+},
+
+{
+text:"Indeed, Allah is with the patient.",
+ref:"Qur'an 8:46"
+},
+
+{
+text:"And whoever relies upon Allah - then He is sufficient for him.",
+ref:"Qur'an 65:3"
+}
+
+];
+
+
+function updateQuote(){
+
+let index=
+Math.floor(new Date().getTime()/86400000)
+%quotes.length;
+
+let q=quotes[index];
+
+document.getElementById("quote").textContent=
+"“"+q.text+"”";
+
+document.getElementById("quoteRef").textContent=q.ref;
+
+}
+
+
+function saveGoal(){
+
+data.goal=document.getElementById("goalInput").value;
+
+save();
+
+showToast("Goal saved");
+
+renderProfile();
+
+}
+
+
+function renderProfile(){
+
+document.getElementById("goalInput").value=data.goal;
+
+document.getElementById("savedGoal").textContent=
+data.goal?
+"Current goal: "+data.goal:
+"No goal set yet.";
+
+document.getElementById("journal").value=data.journal;
+
+}
+
+
+function saveJournal(){
+
+data.journal=document.getElementById("journal").value;
+
+save();
+
+showToast("Journal saved");
+
+}
+
+
+function setStart(){
+
+let value=document.getElementById("startDate").value;
+
+if(!value){
+
+alert("Choose a date first.");
+
+return;
+
+}
+
+data.start=new Date(value).toISOString();
+
+save();
+
+updateAll();
+
+showToast("Start date updated");
+
+}
+
+
+function resetStreak(){
+
+let confirmReset=confirm(
+"Reset your current streak? Your XP and achievements will remain."
+);
+
+if(!confirmReset)return;
+
+data.start=new Date().toISOString();
+
+save();
+
+updateAll();
+
+showToast("Streak reset");
+
+}
+
+
+function urgeButton(){
+
+updatePopup(
+"🛡️",
+"PAUSE",
+"Take a minute. Remember why you started. Do not make a decision based on a temporary urge."
+);
+
+}
+
+
+function updatePopup(icon,title,text){
+
+document.getElementById("popupIcon").textContent=icon;
+document.getElementById("popupTitle").textContent=title;
+document.getElementById("popupText").textContent=text;
+
+document.getElementById("popup").classList.add("show");
+
+}
+
+
+function showPopup(icon,title,text){
+
+updatePopup(icon,title,text);
+
+}
+
+
+function closePopup(){
+
+document.getElementById("popup").classList.remove("show");
+
+}
+
+
+let toastTimer;
+
+function showToast(text){
+
+let toast=document.getElementById("toast");
+
+toast.textContent=text;
+
+toast.classList.add("show");
+
+clearTimeout(toastTimer);
+
+toastTimer=setTimeout(()=>{
+toast.classList.remove("show");
+},1800);
+
+}
+
+
+function showPage(page,button){
+
+document.querySelectorAll(".page")
+.forEach(p=>p.classList.remove("active"));
+
+document.getElementById(page).classList.add("active");
+
+document.querySelectorAll(".navBtn")
+.forEach(b=>b.classList.remove("active"));
+
+if(button){
+
+button.classList.add("active");
+
+}
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+function updateAll(){
+
+updateStreak();
+updateTimer();
+updateLevel();
+updateTree();
+renderQuests();
+renderCalendar();
+renderAchievements();
+renderMilestones();
+renderProfile();
+updateQuote();
+
+document.getElementById("questsDone").textContent=data.questsDone;
+document.getElementById("totalDays").textContent=getStreak();
+
+}
+
+
+updateAll(); </script>
